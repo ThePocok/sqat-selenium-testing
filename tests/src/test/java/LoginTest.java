@@ -1,6 +1,9 @@
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,18 +15,27 @@ public class LoginTest extends NespressoTestBase{
 
   @Before
   public void setup() throws IOException {
-    //createWebDriver();
-    //homePage = new HomePage(driver);
+    createWebDriver();
+    homePage = new HomePage(driver);
   }
 
   @Test
   public void testLoginWithCorrectData() throws MalformedURLException {
-    ChromeOptions options = new ChromeOptions();
-    driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-    driver.manage().window().maximize();
-
     driver.get(HomePage.URL);
 
-    //homePage.login(properties.getProperty("email"), properties.getProperty("password"));
+    homePage.login(properties.getProperty("email"), properties.getProperty("password"));
+  }
+
+  @Test
+  public void testPageLoaded() {
+    driver.get(HomePage.URL);
+    Assert.assertTrue(homePage.getTitle().getText().contains("NESPRESSO"));
+  }
+
+  //@After
+  public void close() {
+    if (driver != null) {
+      driver.quit();
+    }
   }
 }

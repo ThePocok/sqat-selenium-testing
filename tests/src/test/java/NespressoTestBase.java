@@ -16,7 +16,7 @@ public class NespressoTestBase {
     driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
     driver.manage().window().maximize();
 
-    //properties.load(new FileInputStream("src/test/resources/configuration.properties"));
+    properties.load(new FileInputStream("src/test/resources/configuration.properties"));
 
   }
 }
