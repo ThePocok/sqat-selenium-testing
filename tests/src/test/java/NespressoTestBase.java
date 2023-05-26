@@ -13,6 +13,8 @@ public class NespressoTestBase {
 
   protected void createWebDriver() throws IOException {
     ChromeOptions options = new ChromeOptions();
+    options.addArguments("--no-sandbox");
+    options.addArguments("--headless");
     driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
     driver.manage().window().maximize();
 

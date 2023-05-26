@@ -16,13 +16,6 @@ public class HomePageTest extends NespressoTestBase{
     homePage = new HomePage(driver);
   }
 
-  //@Test
-  public void testLoginWithCorrectData(){
-    driver.get(HomePage.URL);
-
-    homePage.login(properties.getProperty("email"), properties.getProperty("password"));
-  }
-
   @Test
   public void testPageLoaded() {
     driver.get(HomePage.URL);
