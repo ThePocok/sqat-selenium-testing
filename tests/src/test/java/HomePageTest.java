@@ -41,9 +41,12 @@ public class HomePageTest extends NespressoTestBase{
 
   @Test
   public void testDisableCookiesWithoutClicking() {
+    driver.get(HomePage.URL);
+    Assert.assertTrue(homePage.isCookieConsentPopupShown());
+
     driver.manage().addCookie(new Cookie("_evidon_consent_cookie",
         "{\"consent_date\":\"2023-05-26T06:16:40.102Z\",\"gpc\":0,\"consent_type\":1}"));
-    driver.get(HomePage.URL);
+    driver.navigate().refresh();
 
     Assert.assertFalse(homePage.isCookieConsentPopupShown());
   }
