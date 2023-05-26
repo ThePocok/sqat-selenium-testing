@@ -12,6 +12,7 @@ public class HomePage extends NespressoBase {
   public final By passwordBy = By.xpath("//*[@id=\"ta-header-password\"]");
   public final By loginButtonBy = By.xpath("//*[@id=\"ta-login-form__submit\"]");
   public final By declineCookiesButtonBy = By.id("_evidon-decline-button");
+  public final By cookieConsentTitleBy = By.xpath("//*[@id=\"_evidon-title\"]");
 
 
   public HomePage(WebDriver driver) {
@@ -32,5 +33,17 @@ public class HomePage extends NespressoBase {
 
   public WebElement getTitle() {
     return waitAndReturnElement(titleBy);
+  }
+
+  public WebElement getCookieConsentTitle() {
+    return waitAndReturnElement(cookieConsentTitleBy);
+  }
+
+  public boolean isCookieConsentPopupShown() {
+    return driver.findElements(cookieConsentTitleBy).size() > 0;
+  }
+
+  public void declineCookies() {
+    waitAndReturnElement(declineCookiesButtonBy).click();
   }
 }
