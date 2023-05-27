@@ -9,11 +9,11 @@ import java.util.concurrent.TimeUnit;
 public class SearchPage extends PageBase {
   public static final String URL = "https://forum.index.hu/Search/fastSearchTopic";
 
-  public final By cookieConsentButtonBy = By.xpath("//*[@id=\"qc-cmp2-ui\"]/div[2]/div/button[2]");
-  public final By searchBoxBy = By.xpath("//*[@id=\"kereso\"]/div/form/input[1]");
-  public final By searchButtonBy = By.xpath("//*[@id=\"kereso\"]/div/form/input[2]");
-  public final By resultTopicBy = By.xpath("//*[@id=\"content1col\"]/tbody/tr[2]/td[2]/a");
-  public final By searchInCategoryBy = By.xpath("//*[@id=\"kereso\"]/div/form/select");
+  private final By cookieConsentButtonBy = By.xpath("//*[@id=\"qc-cmp2-ui\"]/div[2]/div/button[2]");
+  private final By searchBoxBy = By.xpath("//*[@id=\"kereso\"]/div/form/input[1]");
+  private final By searchButtonBy = By.xpath("//*[@id=\"kereso\"]/div/form/input[2]");
+  private final By resultTopicBy = By.xpath("//*[@id=\"content1col\"]/tbody/tr[2]/td[2]/a");
+  private final By searchInCategoryBy = By.xpath("//*[@id=\"kereso\"]/div/form/select");
 
   public SearchPage(WebDriver driver) {
     super(driver);

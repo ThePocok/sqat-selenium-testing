@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 public class HomePage extends PageBase {
   public static final String URL = "https://forum.index.hu/Topic/showTopicList";
 
-  public final By titleImageBy = By.xpath("//*[@id=\"mainheader\"]/table/tbody/tr/td[1]/img");
-  public final By footerLinkBy = By.xpath("//*[@id=\"inda_footer\"]/div[1]/h4/a");
-  public final By cookieConsentButtonBy = By.xpath("//*[@id=\"qc-cmp2-ui\"]/div[2]/div/button[2]");
+  private final By titleImageBy = By.xpath("//*[@id=\"mainheader\"]/table/tbody/tr/td[1]/img");
+  private final By footerLinkBy = By.xpath("//*[@id=\"inda_footer\"]/div[1]/h4/a");
+  private final By cookieConsentButtonBy = By.xpath("//*[@id=\"qc-cmp2-ui\"]/div[2]/div/button[2]");
 
 
   public HomePage(WebDriver driver) {
