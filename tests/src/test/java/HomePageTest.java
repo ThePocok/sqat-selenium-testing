@@ -20,6 +20,7 @@ public class HomePageTest extends TestBase {
     homePage.connect();
 
     Assert.assertEquals("Index Fórumok", homePage.getTitleImageAlt());
+    Assert.assertEquals("forum.index.hu", homePage.getFooterLink());
   }
 
   @Test
