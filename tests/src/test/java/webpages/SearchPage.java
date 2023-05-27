@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.concurrent.TimeUnit;
+
 public class SearchPage extends PageBase {
   public static final String URL = "https://forum.index.hu/Search/fastSearchTopic";
 
@@ -11,7 +13,7 @@ public class SearchPage extends PageBase {
   public final By searchBoxBy = By.xpath("//*[@id=\"kereso\"]/div/form/input[1]");
   public final By searchButtonBy = By.xpath("//*[@id=\"kereso\"]/div/form/input[2]");
   public final By resultTopicBy = By.xpath("//*[@id=\"content1col\"]/tbody/tr[2]/td[2]/a");
-  public final By hitCountBy = By.xpath("//*[@id=\"maintd\"]/form[1]/table/tbody/tr/td[2]/select");
+  public final By searchInCategoryBy = By.xpath("//*[@id=\"kereso\"]/div/form/select");
 
   public SearchPage(WebDriver driver) {
     super(driver);
@@ -27,11 +29,21 @@ public class SearchPage extends PageBase {
     waitAndReturnElement(searchButtonBy).click();
   }
 
+  public void searchForNickname(String nickname) {
+    waitAndReturnElement(searchBoxBy).sendKeys(nickname);
+    setSearchCategoryToNicknames();
+
+    waitAndReturnElement(searchButtonBy).click();
+  }
+
   public String getFirstResultTopic() {
     return waitAndReturnElement(resultTopicBy).getText();
   }
 
-  public int getHitCountPerPage() {
-    return Integer.parseInt(new Select(waitAndReturnElement(hitCountBy)).getFirstSelectedOption().getText());
+  private void setSearchCategoryToNicknames() {
+    Select select = new Select(waitAndReturnElement(searchInCategoryBy));
+    select.selectByValue("/User/UserSearch");
+
+    implicitWait(1, TimeUnit.SECONDS);
   }
 }

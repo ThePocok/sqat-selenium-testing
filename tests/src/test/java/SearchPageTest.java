@@ -38,6 +38,16 @@ public class SearchPageTest extends TestBase {
     Assert.assertTrue(searchPage.getFirstResultTopic().contains(keyword));
   }
 
+  @Test
+  public void testSearchForNickname() {
+    searchPage.connect();
+
+    searchPage.searchForNickname(properties.getProperty("name"));
+
+    Assert.assertEquals("https://forum.index.hu/User/UserSearch", driver.getCurrentUrl());
+    Assert.assertEquals(properties.getProperty("name"), searchPage.getFirstResultTopic());
+  }
+
   @After
   public void close() {
     if (driver != null) {
