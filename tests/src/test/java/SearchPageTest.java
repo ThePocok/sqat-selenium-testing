@@ -3,10 +3,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import webpages.HomePage;
 import webpages.SearchPage;
 
-public class SearchPageTest extends NespressoTestBase{
+public class SearchPageTest extends TestBase {
   private SearchPage searchPage;
 
   @Before
@@ -18,9 +17,25 @@ public class SearchPageTest extends NespressoTestBase{
   @Test
   public void testSearch() {
     searchPage.connect();
-
-    searchPage.search("vonat");
+    String keyword = "vonat";
+    searchPage.search(keyword);
     Assert.assertEquals("https://forum.index.hu/Search/fastSearchTopic", driver.getCurrentUrl());
+
+    Assert.assertTrue(searchPage.getFirstResultTopic().contains(keyword));
+  }
+
+  @Test
+  public void testSearchAfterLogin() {
+    searchPage.connect();
+
+    searchPage.login(properties.getProperty("email"), properties.getProperty("password"));
+    Assert.assertEquals(properties.getProperty("name"), searchPage.getLoggedInUsername());
+
+    String keyword = "busz";
+    searchPage.search(keyword);
+    Assert.assertEquals("https://forum.index.hu/Search/fastSearchTopic", driver.getCurrentUrl());
+
+    Assert.assertTrue(searchPage.getFirstResultTopic().contains(keyword));
   }
 
   @After

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class NespressoTestBase {
+public class TestBase {
   protected WebDriver driver;
 
   protected Properties properties = new Properties();

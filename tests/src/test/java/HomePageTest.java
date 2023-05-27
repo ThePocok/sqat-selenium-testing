@@ -4,10 +4,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Cookie;
 import webpages.HomePage;
 
-public class HomePageTest extends NespressoTestBase{
+public class HomePageTest extends TestBase {
   private HomePage homePage;
 
   @Before
