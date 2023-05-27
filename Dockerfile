@@ -18,7 +18,7 @@ RUN wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin
     ln -s /opt/gradle/bin/gradle /usr/bin/gradle
 
 # Set environment variables
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV GRADLE_HOME=/opt/gradle
 
 # Add Gradle and Java to PATH

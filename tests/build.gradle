@@ -1,5 +1,9 @@
 apply plugin: 'java'
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 repositories {
     mavenCentral()
 }
@@ -16,4 +20,5 @@ dependencies {
 
 test{
     testLogging.showStandardStreams = true
+    systemProperty "file.encoding", "utf-8"
 }

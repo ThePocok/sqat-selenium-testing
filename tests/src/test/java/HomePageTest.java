@@ -18,30 +18,33 @@ public class HomePageTest extends NespressoTestBase{
 
   @Test
   public void testPageLoaded() {
-    driver.get(HomePage.URL);
+    homePage.connect();
 
-    Assert.assertTrue(homePage.getTitle().getText().contains("NESPRESSO"));
+    Assert.assertEquals("Index Fórumok", homePage.getTitleImageAlt());
   }
 
   @Test
-  public void testDisableCookies() {
-    driver.get(HomePage.URL);
+  public void testPageTitle() {
+    homePage.connect();
 
-    Assert.assertTrue(homePage.getCookieConsentTitle().getText().contains("COOKIE"));
-    homePage.declineCookies();
-    Assert.assertFalse(homePage.isCookieConsentPopupShown());
+    Assert.assertEquals("Index Fórum", driver.getTitle());
   }
 
   @Test
-  public void testDisableCookiesWithoutClicking() {
-    driver.get(HomePage.URL);
-    Assert.assertTrue(homePage.isCookieConsentPopupShown());
+  public void testLogin() {
+    homePage.connect();
 
-    driver.manage().addCookie(new Cookie("_evidon_consent_cookie",
-        "{\"consent_date\":\"2023-05-26T06:16:40.102Z\",\"gpc\":0,\"consent_type\":1}"));
-    driver.navigate().refresh();
+    homePage.login(properties.getProperty("email"), properties.getProperty("password"));
+    Assert.assertEquals(properties.getProperty("name"), homePage.getLoggedInUsername());
+  }
 
-    Assert.assertFalse(homePage.isCookieConsentPopupShown());
+  @Test
+  public void testLogout() {
+    homePage.connect();
+
+    homePage.login(properties.getProperty("email"), properties.getProperty("password"));
+    homePage.logout();
+    Assert.assertEquals("https://kilepes.blog.hu/", driver.getCurrentUrl());
   }
 
   @After
