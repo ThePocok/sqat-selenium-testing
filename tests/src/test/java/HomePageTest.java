@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.interactions.Actions;
 import webpages.HomePage;
 
 public class HomePageTest extends TestBase {
@@ -28,6 +29,16 @@ public class HomePageTest extends TestBase {
     homePage.connect();
 
     Assert.assertEquals("Index Fórum", driver.getTitle());
+  }
+
+  @Test
+  public void testBlogHuIconHover() {
+    homePage.connect();
+    Assert.assertEquals("0px -100px", homePage.getBlogHuIcon().getCssValue("background-position"));
+
+    Actions actions = new Actions(driver);
+    actions.moveToElement(homePage.getBlogHuIcon()).perform();
+    Assert.assertEquals("-100px -100px", homePage.getBlogHuIcon().getCssValue("background-position"));
   }
 
   @Test
