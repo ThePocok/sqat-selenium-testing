@@ -24,7 +24,7 @@ public class TopicPageTest extends TestBase{
   private String topicOpened;
 
 
-  @Parameters
+  @Parameters(name = "{1}")
   public static Collection<String[]> data() throws IOException {
     File folder = new File("src/test/resources/pages");
     File[] listOfFiles = folder.listFiles();
