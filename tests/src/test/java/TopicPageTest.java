@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
+
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -75,6 +77,13 @@ public class TopicPageTest extends TestBase{
   public void testLastCommentId() {
     topicPage.connect();
 
-    Assert.assertTrue(Integer.parseInt(lastComment) >= topicPage.getLastCommentId());
+    Assert.assertTrue(topicPage.getLastCommentId() >= Integer.parseInt(lastComment));
+  }
+
+  @After
+  public void close() {
+    if (driver != null) {
+      driver.quit();
+    }
   }
 }
