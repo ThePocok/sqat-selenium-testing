@@ -24,18 +24,26 @@ public class HomePageTest extends TestBase {
   }
 
   @Test
-  public void testPageTitle() {
+  public void testPageTitleCorrect() {
     homePage.connect();
 
     Assert.assertEquals("Index Fórum", driver.getTitle());
   }
 
   @Test
-  public void testLogin() {
+  public void testLoginSuccessful() {
     homePage.connect();
 
     homePage.login(properties.getProperty("email"), properties.getProperty("password"));
     Assert.assertEquals(properties.getProperty("name"), homePage.getLoggedInUsername());
+  }
+
+  @Test
+  public void testLoginUnsuccessful() {
+    homePage.connect();
+
+    homePage.login(properties.getProperty("email"), "asdf1234");
+    Assert.assertEquals("Hibás felhasználónév vagy jelszó!", homePage.getLoginErrorMessage());
   }
 
   @Test
