@@ -66,6 +66,18 @@ public class HomePageTest extends TestBase {
     Assert.assertEquals("https://kilepes.blog.hu/", driver.getCurrentUrl());
   }
 
+  @Test
+  public void testOpeningCategoryAndGoingBack() {
+    homePage.connect();
+    Assert.assertEquals(HomePage.URL, driver.getCurrentUrl());
+
+    homePage.openGeneralCategory();
+    Assert.assertEquals("https://forum.index.hu/Topic/showTopicList?t=9111312", driver.getCurrentUrl());
+
+    driver.navigate().back();
+    Assert.assertEquals(HomePage.URL, driver.getCurrentUrl());
+  }
+
   @After
   public void close() {
     if (driver != null) {
