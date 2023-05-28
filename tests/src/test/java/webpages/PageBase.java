@@ -12,6 +12,7 @@ public class PageBase {
   protected WebDriver driver;
   protected WebDriverWait wait;
 
+  protected final By cookieConsentButtonBy = By.xpath("//*[@id=\"qc-cmp2-ui\"]/div[2]/div/button[2]");
   private static final By emailBy = By.xpath("//*[@id=\"indpl_login_box_180\"]/form/div[3]/div[2]/div[1]/input[1]");
   private static final By passwordBy = By.xpath("//*[@id=\"indpl_login_box_180\"]/form/div[3]/div[2]/div[1]/input[2]");
   private static final By sendLoginFormButtonBy = By.xpath("//*[@id=\"indpl_login_box_180\"]/form/div[3]/div[2]/div[2]/input");

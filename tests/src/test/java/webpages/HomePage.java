@@ -11,8 +11,6 @@ public class HomePage extends PageBase {
 
   private final By titleImageBy = By.xpath("//*[@id=\"mainheader\"]/table/tbody/tr/td[1]/img");
   private final By footerLinkBy = By.xpath("//*[@id=\"inda_footer\"]/div[1]/h4/a");
-  private final By cookieConsentButtonBy = By.xpath("//*[@id=\"qc-cmp2-ui\"]/div[2]/div/button[2]");
-
 
   public HomePage(WebDriver driver) {
     super(driver);
